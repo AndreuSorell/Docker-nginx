@@ -14,7 +14,7 @@ donde indicando:
 - el puerto del host con ```-p```
 - que el contenedor se ejecute en segundo plano con ```-d```
 - que se borre automaticamente cuando sales del contenedor con ```--rm```
-- y el nombre del contenedor con ````--name```
+- y el nombre del contenedor con ```--name```
 
 ![image](https://user-images.githubusercontent.com/91556405/159949539-b22a93ef-be55-4fc9-92ac-a5014e6d76b5.png)
 
@@ -25,3 +25,10 @@ Ahora, si se accede a http://localhost:8080 con el contenedor activo, podremos c
 Después, para cerrar el contenedor utilizaremos ```$ docker stop web```.
 
 ![image](https://user-images.githubusercontent.com/91556405/159951971-b2eabb23-3d38-4713-848a-074fbd2f1400.png)
+
+#### Agregar HTML personalizado
+Creamos una página html personalizada y luego la publicamos usando la imagen Nginx.
+Para ello, un vez creado el archivo html en el directorio ```~/Documentos/nginx/site-content```,
+lanzamos el siguinte comando: ```docker run --rm -d -p 8080:80 --name web -v ~/Documentos/nginx/site-content:/usr/share/nginx/html nginx```
+![Captura de pantalla 2022-04-25 182851](https://user-images.githubusercontent.com/91556405/165134417-9df218eb-c612-4f10-9f07-4acc0a62bc75.png)
+![Captura de pantalla 2022-04-25 182706](https://user-images.githubusercontent.com/91556405/165134433-1e644fd0-b57f-4cdd-ba2e-4836cfe0daf9.png)
