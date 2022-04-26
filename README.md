@@ -28,7 +28,23 @@ Después, para cerrar el contenedor utilizaremos ```$ docker stop web```.
 
 #### Agregar HTML personalizado
 Creamos una página html personalizada y luego la publicamos usando la imagen Nginx.
-Para ello, un vez creado el archivo html en el directorio ```~/Documentos/nginx/site-content```,
+Para ello, una vez creado el archivo html en el directorio ```~/Documentos/nginx/site-content```,
 lanzamos el siguinte comando: ```docker run --rm -d -p 8080:80 --name web -v ~/Documentos/nginx/site-content:/usr/share/nginx/html nginx```
 ![Captura de pantalla 2022-04-25 182851](https://user-images.githubusercontent.com/91556405/165134417-9df218eb-c612-4f10-9f07-4acc0a62bc75.png)
 ![Captura de pantalla 2022-04-25 182706](https://user-images.githubusercontent.com/91556405/165134433-1e644fd0-b57f-4cdd-ba2e-4836cfe0daf9.png)
+
+## Nginx con la maquina de Azure
+Primero, añadimos una nueva regla de puerto de entrada para el puerto 8080 en el portal de azure.
+![Captura de pantalla 2022-04-25 210142](https://user-images.githubusercontent.com/91556405/165339901-883b9dec-ca4e-4dfc-8f26-e91c9899fea7.png)
+
+Luego, entramos en la maquina virtual desde la consola
+![8](https://user-images.githubusercontent.com/91556405/165344056-7d8cbb2c-95c5-4321-bfce-986ac7a60477.png)
+
+Y hacemos un pull de la imagen de nginx, con sudo al principio para darle privilegios de usuario ```sudo docker pull nginx:latest```
+![3](https://user-images.githubusercontent.com/91556405/165341978-64768b32-11d4-4f77-9ea7-58f1acd90f10.png)
+
+Finalmente, creamos el volumen con un html personalizado que hemos creado anteriormente
+![Captura de pantalla 2022-04-25 210052](https://user-images.githubusercontent.com/91556405/165342819-d1e0b425-750c-44f6-8879-452b921523bd.png)
+![Captura de pantalla 2022-04-25 210120](https://user-images.githubusercontent.com/91556405/165342860-8cbc1c63-cd33-4b6b-97d5-69d888b0407b.png)
+
+
